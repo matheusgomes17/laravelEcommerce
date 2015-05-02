@@ -2,7 +2,8 @@
 
 use CodeCommerce\Category;
 
-class AdminCategoriesController extends Controller {
+class AdminCategoriesController extends Controller
+{
 
     private $categories;
 
@@ -11,19 +12,27 @@ class AdminCategoriesController extends Controller {
         $this->categories = $category;
     }
 
-	public function index()
-	{
-        $categories = $this->categories->all();
+    public function index($id = null)
+    {
+        if (!$id) {
+            $categories = $this->categories->all();
 
-        if(count($categories) == 0)
-            echo "Não existe categoria cadastrado!";
+            if (count($categories) == 0)
+                echo "Não existe categoria cadastrado!";
 
-        foreach($categories as $category):
-            echo $category->name . '</br>';
-        endforeach;
+            foreach ($categories as $category):
+                echo $category->name . '</br>';
+            endforeach;
+
+        } else {
+            $categories = $this->categories->find($id);
+            if (count($categories) > 0)
+                echo $categories->name;
+            else
+                echo "Não existe esta categoria!";
+        }
 
     }
-
 
 
 }

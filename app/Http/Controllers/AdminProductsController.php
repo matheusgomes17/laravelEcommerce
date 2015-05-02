@@ -10,17 +10,26 @@ class AdminProductsController extends Controller {
     {
         $this->products = $product;
     }
-	public function index()
+	public function index($id = null)
 	{
 
-        $products = $this->products->all();
+        if (!$id) {
+            $products = $this->products->all();
 
-        if(count($products) == 0)
-            echo "Não existe produto cadastrado!";
+            if (count($products) == 0)
+                echo "Não existe produto cadastrado!";
 
-        foreach($products as $product):
-            echo $product->name . '</br>';
-        endforeach;
+            foreach ($products as $product):
+                echo $product->name . '</br>';
+            endforeach;
+
+        } else {
+            $products = $this->products->find($id);
+            if (count($products) > 0)
+                echo $products->name;
+            else
+                echo "Não existe este produto!";
+        }
 
 	}
 
