@@ -1,18 +1,23 @@
 <?php
 
-Route::get('/', 'WelcomeController@index');
-Route::get('exemplo', 'WelcomeController@exemplo');
+Route::get('', function(){
+  return view('home');
+});
+
 
 Route::group(['prefix' => 'admin'], function()
 {
-    Route::get('product/{id?}', ['as' => 'produtos','uses' => 'AdminProductsController@index', function($id = null){}]);
-    Route::get('category/{id?}', ['as' => 'categorias','uses' => 'AdminCategoriesController@index', function($id = null){}]);
+    Route::resource('categories', 'CategoriesController');
+    Route::get('categories/{id}/delete', array(
+        'as' => 'categories.delete',
+        'uses' => 'CategoriesController@destroy'
+    ));
+
+    Route::resource('products', 'ProductsController');
+    Route::get('products/{id}/delete', array(
+        'as' => 'products.delete',
+        'uses' => 'ProductsController@destroy'
+    ));
 });
 
 
-Route::get('user/{id?}', function($id = null){
-    if($id)
-         return "Olá $id";
-    else
-        return "Não possui id";
-});
