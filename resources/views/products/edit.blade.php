@@ -38,6 +38,23 @@
 
         <div class="form-group">
 
+            {!! Form::label('featured', 'Featured:') !!}<br>
+
+            {!! Form::radio('featured', false, false) !!} No<br>
+            {!! Form::radio('featured', true, true) !!} Yes
+
+        </div>
+
+
+        <div class="form-group">
+            {!! Form::label('recommend', 'Recommend:') !!}<br>
+            {!! Form::radio('recommend', false, false) !!} No<br>
+            {!! Form::radio('recommend', true, true) !!} Yes
+        </div>
+
+
+        <div class="form-group">
+
             {!! Form::submit('Save product', ['class' => 'btn btn-primary ']) !!}
 
         </div>

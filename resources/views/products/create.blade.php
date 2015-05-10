@@ -24,17 +24,35 @@
 
         <div class="form-group">
 
-            {!! Form::label('description', 'Description:') !!}
-            {!! Form::textarea('description', '', ['class' => 'form-control']) !!}
-
-        </div>
-
-        <div class="form-group">
-
             {!! Form::label('price', 'Price:') !!}
             {!! Form::text('price', '', ['class' => 'form-control']) !!}
 
         </div>
+
+       <div class="form-group">
+
+            {!! Form::label('featured', 'Featured:') !!}<br>
+
+            {!! Form::radio('featured', false, false) !!} No<br>
+            {!! Form::radio('featured', true, true) !!} Yes
+
+        </div>
+
+
+        <div class="form-group">
+            {!! Form::label('recommend', 'Recommend:') !!}<br>
+            {!! Form::radio('recommend', false, false) !!} No<br>
+            {!! Form::radio('recommend', true, true) !!} Yes
+        </div>
+
+        <div class="form-group">
+
+            {!! Form::label('description', 'Description:') !!}
+            {!! Form::textarea('description', '',['class' => 'form-control']) !!}
+
+        </div>
+
+
 
         <div class="form-group">
 

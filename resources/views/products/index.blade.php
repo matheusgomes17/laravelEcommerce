@@ -15,6 +15,8 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Recommend</th>
+                <th>Featured</th>
                 <th>Action</th>
             </tr>
             @foreach($products as $product)
@@ -22,7 +24,10 @@
                 <td>{{ $product->id }}</td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->description }}
-                <td>{{ $product->price }}</td>
+                <td>R$: {{ $product->price }}</td>
+                <td>R$: {{ $product->price }}</td>
+                <td>{{ $product->recommend ? "Yes": "No" }}</td>
+                <td>{{ $product->featured ? "Yes": "No" }}</td>
                 <td>
                     <a href="{{ route('admin.products.edit', ['id' => $product->id ]) }}" >Edit</a> |
                     <a href="{{ route('products.delete', ['id' => $product->id ]) }}" onclick="if(!confirm('Tem certeza que quer deletar?')){return false;};" >Delete</a>
