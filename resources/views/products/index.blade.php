@@ -14,6 +14,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Category</th>
                 <th>Price</th>
                 <th>Recommend</th>
                 <th>Featured</th>
@@ -23,8 +24,8 @@
             <tr>
                 <td>{{ $product->id }}</td>
                 <td>{{ $product->name }}</td>
-                <td>{{ $product->description }}
-                <td>R$: {{ $product->price }}</td>
+                <td>{{ str_limit($product->description, $limit = 100, $end = '...') }}
+                <td>{{ $product->category->name }}</td>
                 <td>R$: {{ $product->price }}</td>
                 <td>{{ $product->recommend ? "Yes": "No" }}</td>
                 <td>{{ $product->featured ? "Yes": "No" }}</td>
@@ -35,6 +36,7 @@
             </tr>
             @endforeach
         </table>
+        {!! $products->render() !!}
 
     </div>
 @endsection
