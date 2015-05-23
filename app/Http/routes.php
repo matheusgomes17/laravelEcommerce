@@ -17,6 +17,11 @@ Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+']],  function()
         'as' => 'products.delete',
         'uses' => 'ProductsController@destroy'
     ));
+    Route::resource('users', 'UsersController');
+    Route::get('users/{id}/delete', array(
+        'as' => 'users.delete',
+        'uses' => 'UsersController@destroy'
+    ));
 });
 
 

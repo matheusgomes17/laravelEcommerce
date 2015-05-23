@@ -9,7 +9,8 @@
 
 				<div class="panel-body">
 					<a href="{{ route('admin.products.index') }}">Products</a> </br>
-                    <a href="{{ route('admin.categories.index') }}">categories</a> </br>
+                    <a href="{{ route('admin.categories.index') }}">Categories</a> </br>
+
 				</div>
 			</div>
 		</div>
