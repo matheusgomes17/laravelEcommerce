@@ -17,11 +17,15 @@ Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+']],  function()
         'as' => 'products.delete',
         'uses' => 'ProductsController@destroy'
     ));
-    Route::resource('users', 'UsersController');
-    Route::get('users/{id}/delete', array(
-        'as' => 'users.delete',
-        'uses' => 'UsersController@destroy'
-    ));
+
+    Route::group(['prefix' => 'images'], function(){
+        //site.com.br/admin/products/images/{id}/product
+        Route::get('{id}/product', ['as' => 'product.images', 'uses' => 'ProductsController@images']);
+        Route::get('create/{id}/product', ['as' => 'product.images.create', 'uses' => 'ProductsController@createImage']);
+        Route::post('store/{id}/product', ['as' => 'product.images.store', 'uses' => 'ProductsController@storeImage']);
+        Route::get('destroy/{id}/image', ['as' => 'product.images.destroy', 'uses' => 'ProductsController@destroyImage']);
+    });
+
 });
 
 

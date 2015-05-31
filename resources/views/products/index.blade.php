@@ -31,6 +31,7 @@
                 <td>{{ $product->featured ? "Yes": "No" }}</td>
                 <td>
                     <a href="{{ route('admin.products.edit', ['id' => $product->id ]) }}" >Edit</a> |
+                    <a href="{{ route('product.images', ['id' => $product->id ]) }}" >Images</a> |
                     <a href="{{ route('products.delete', ['id' => $product->id ]) }}" onclick="if(!confirm('Tem certeza que quer deletar?')){return false;};" >Delete</a>
                 </td>
             </tr>
