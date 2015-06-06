@@ -53,8 +53,17 @@ class ProductsController extends Controller
        return redirect()->route('admin.products.index');
     }
 
-    public function destroy($id)
+    public function destroy($id, ProductImage $productImage)
     {
+        $images = $this->productModel->find($id)->images()->get();
+        if(count($images) > 0) {
+            foreach($images as $image):
+                if(file_exists(public_path().'/uploads/'.$image->id.'.'.$image->extension)){
+                    Storage::disk('public_local')->delete($image->id.'.'.$image->extension);
+                }
+                $image->delete();
+            endforeach;
+        }
         $this->productModel->find($id)->delete();
         return redirect()->route('admin.products.index');
     }
